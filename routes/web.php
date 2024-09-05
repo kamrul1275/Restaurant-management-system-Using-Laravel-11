@@ -80,6 +80,16 @@ Route::controller(CategoryController::class)->group(function(){
 });
 
 
+Route::controller(CategoryController::class)->group(function(){
+     
+    Route::get('/all/city', 'allCity')->name('all.city');
+    Route::get('/add/city', 'addCity')->name('add.city');
+    Route::post('/store/city', 'storeCity')->name('store.city');
+
+});
+
+
+
 });//end admin maddleware
 
 

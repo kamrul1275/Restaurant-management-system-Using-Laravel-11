@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\City;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 use Illuminate\Http\Request;
@@ -27,6 +28,7 @@ class CategoryController extends Controller
 
     function storeCategory(Request $request){
 
+
         if ($request->file('category_image')) {
             $image = $request->file('category_image');
             $manager = new ImageManager(new Driver());
@@ -47,6 +49,36 @@ class CategoryController extends Controller
         );
 
         return redirect()->route('all.category')->with($notification);
+  
+    }//end method
 
+
+
+
+    // start city part
+
+
+    function allCity(){
+
+         $cities=City::latest()->get();
+         return view('backend.city.all_city',compact('cities'));
+    }//end method
+
+
+    function storeCity(Request $request){
+        City::create([
+            'city_name' => $request->city_name,
+            'city_slug' =>  strtolower(str_replace(' ','-',$request->city_name)),
+           
+        ]); 
+    
+
+    $notification = array(
+        'message' => 'City Inserted Successfully',
+        'alert-type' => 'success'
+    );
+
+    return redirect()->route('all.city')->with($notification);
     }
+        
 }

@@ -30,7 +30,7 @@
                     <div class="card">
                         <div class="card-body">
                            
-                            <form action="{{route('store.category')}}" method="post" id="myForm">  
+                            <form action="{{route('store.category')}}" method="post" id="myForm" enctype="multipart/form-data">  
                                 @csrf
 
                                     <div class="row">

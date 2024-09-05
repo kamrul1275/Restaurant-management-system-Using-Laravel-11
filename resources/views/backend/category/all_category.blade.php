@@ -19,6 +19,7 @@
 
                                 </div>
                             </div>
+
                         </div>
                         <!-- end page title -->
 
@@ -33,12 +34,10 @@
                                         <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                                             <thead>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
+                                                <th>No</th>
+                                                <th>Category Name</th>
+                                                <th>Image</th>
+                                                <th>Action</th>
                                             </tr>
                                             </thead>
         
@@ -51,7 +50,16 @@
                                                 <td>{{$key+1}}</td>
                                                 <td>{{ $iteam->category_name}} </td>
                                                 <td>
-                                                    <img src="{{$iteam->category_image}}" stytle="width:80px; height:80px;" alt="">
+                                                @if($iteam->category_image)
+                                                    <img src="{{ asset($iteam->category_image) }}" alt="{{ $iteam->category_name }}" width="80" height="80">
+                                                @else
+                                                    No Image
+                                                @endif
+                                                </td>
+
+                                                <td>
+                                                    <a href="" class="btn btn-success">Edit</a>
+                                                    <a href="" class="btn btn-danger">Delete</a>
                                                 </td>
                                               
                                             </tr>
@@ -68,6 +76,7 @@
                                 </div>
                             </div> <!-- end col -->
                         </div> <!-- end row --> 
-         
+
+
 
 @endsection
